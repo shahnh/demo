@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<!-- Bootstrap core CSS -->
+<link href="https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+	.bd-placeholder-img {
+		font-size: 1.125rem;
+		text-anchor: middle;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	@media (min-width: 768px) {
+		.bd-placeholder-img-lg {
+			font-size: 3.5rem;
+		}
+	}
+</style>
+<!-- Custom styles for this template -->
+<link href="https://getbootstrap.com/docs/4.4/examples/carousel/carousel.css" rel="stylesheet">
+
+<script language="javascript" type="text/javascript">
+	function addRowToTable() {
+		let table = document.getElementById('myTable');
+		let rowCount = table.rows.length;
+		let textVal = document.getElementById('todoItem').value;
+		let assignee = document.getElementById('assignee').value;
+
+		let row = table.insertRow(rowCount);
+		let cell1 = row.insertCell(0);
+		let cell2 = row.insertCell(1);
+		let cell3 = row.insertCell(2);
+		let cell4 = row.insertCell(3);
+
+		let editButton = document.createElement("BUTTON");
+		editButton.innerHTML = "Edit";
+		editButton.onclick = function () {
+			let newText = window.prompt("Enter the new text for this item", "");
+			if (newText == null || newText == "") {
+
+			} else {
+				cell1.innerHTML = newText;
+			}
+		}
+
+		let deleteButton = document.createElement("BUTTON");
+		deleteButton.innerHTML = "Delete";
+		deleteButton.onclick = function () {
+			row.remove();
+		}
+
+		cell1.innerHTML = textVal;
+
+		cell2.innerHTML = assignee;
+
+		cell3.appendChild(editButton);
+		cell3.appendChild(deleteButton);
+
+		let checkBox = document.createElement("input");
+		checkBox.type = "checkbox";
+		checkBox.name = "name";
+		checkBox.style.margin = "auto";
+		cell4.appendChild(checkBox);
+	}
+
+</script>
+
+<body class="bg-light">
+	<header class="mb-4">
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<a class="navbar-brand" href="#">To-Do List</a>
+			<div class="form-inline mt-2 mt-md-0 ml-auto">
+				<input type="text" name="enter" class="enter form-control mr-sm-3" id="todoItem"
+					placeholder="Item name" />
+				<input type="text" name="assignee" class="form-control mr-sm-3" id="assignee" placeholder="Assignee" />
+				<input type="button" class="btn btn-outline-success my-2 my-sm-0" value="Add Item"
+					OnClick="addRowToTable()" />
+				<div>
+		</nav>
+	</header>
+
+
+
+	<main role="main">
+		<div class="container-fluid ">
+			<div class="row">
+				<div class="col-md-auto">
+
+
+					<table id="myTable" class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Todo Item</th>
+								<th scope="col">Assigned User</th>
+								<th scope="col">Buttons</th>
+								<th scope="col">Check</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>
