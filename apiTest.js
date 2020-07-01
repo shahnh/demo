@@ -42,7 +42,7 @@ app.post('/api/sendstuff/', (req, res) => {
         res.status(500).send({message: 'error: was expecting a message body'})
 });
 
-app.get('/api/test',(request, response) => {
+app.get('/',(request, response) => {
     response.status(200).send(sendData);
 });
 
