@@ -31,8 +31,8 @@ app.post('/post/:id', (expressrequest, response) => {
         }
         request(requestOptions,
             function(error, res, body) {
-                response.status(200).send(body[0]);
-                console.log(body[0]);
+                response.status(200).send(body);
+                console.log(body);
             })
     }
     else
